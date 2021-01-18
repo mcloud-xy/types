@@ -206,6 +206,7 @@ type ClusterAlertRuleSpec struct {
 	SystemServiceRule *SystemServiceRule `json:"systemServiceRule,omitempty"`
 	MetricRule        *MetricRule        `json:"metricRule,omitempty"`
 	ClusterScanRule   *ClusterScanRule   `json:"clusterScanRule,omitempty"`
+	DeploymentRule    *DeploymentRule    `json:"deploymentRule,omitempty"`
 }
 
 func (c *ClusterAlertRuleSpec) ObjClusterName() string {
@@ -284,6 +285,15 @@ type NodeRule struct {
 	Condition    string            `json:"condition,omitempty" norman:"required,options=notready|mem|cpu,default=notready"`
 	MemThreshold int               `json:"memThreshold,omitempty" norman:"min=1,max=100,default=70"`
 	CPUThreshold int               `json:"cpuThreshold,omitempty" norman:"min=1,default=70"`
+}
+
+type DeploymentRule struct {
+	Condition           string            `json:"condition,omitempty" norman:"options=hasRestart"`
+	MemThreshold        int               `json:"memThreshold,omitempty" norman:"min=1,max=100"`
+	CPUThreshold        int               `json:"cpuThreshold,omitempty" norman:"min=1,max=100"`
+	DeploymentName      string            `json:"deploymentName,omitempty"`
+	DeploymentNamespace string            `json:"deploymentNamespace,omitempty"`
+	Selector            map[string]string `json:"selector,omitempty"`
 }
 
 type PodRule struct {

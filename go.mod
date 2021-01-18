@@ -1,10 +1,11 @@
-module github.com/rancher/types
+module github.com/mcloud-xy/types
 
 go 1.13
 
 replace (
 	github.com/knative/pkg => github.com/rancher/pkg v0.0.0-20190514055449-b30ab9de040e
 	github.com/matryer/moq => github.com/rancher/moq v0.0.0-20190404221404-ee5226d43009
+	github.com/rancher/types => ./
 	k8s.io/client-go => k8s.io/client-go v0.18.0
 )
 
@@ -13,9 +14,11 @@ require (
 	github.com/knative/pkg v0.0.0-20190817231834-12ee58e32cc8
 	github.com/pkg/errors v0.8.1
 	github.com/rancher/norman v0.0.0-20200520181341-ab75acb55410
+	github.com/rancher/types v0.0.0-00010101000000-000000000000
 	github.com/rancher/wrangler v0.5.4-0.20200520040055-b8d49179cfc8
 	github.com/rancher/wrangler-api v0.5.1-0.20200326194427-c13310506d04
 	github.com/sirupsen/logrus v1.4.2
+	golang.org/x/tools v0.0.0-20210115202250-e0d201561e39 // indirect
 	k8s.io/api v0.18.0
 	k8s.io/apiextensions-apiserver v0.18.0
 	k8s.io/apimachinery v0.18.0

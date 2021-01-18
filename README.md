@@ -23,7 +23,7 @@ To generate types you need to update vendor.
     Example:    
     `/Users/<yourusername>/work/types/src/github.com/rancher/types` or
     `/Users/<yourusername>/go/src/github.com/rancher/types`
-2. Update go.mod for what you need 
+2. Update go.mod for what you need, change go.mod to rancher/types
 3. Run `GO111MODULE=on go mod vendor`
 4. Export your types gopath directory
     

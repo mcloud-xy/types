@@ -12,6 +12,7 @@ const (
 	ClusterAlertRuleFieldClusterScanRule       = "clusterScanRule"
 	ClusterAlertRuleFieldCreated               = "created"
 	ClusterAlertRuleFieldCreatorID             = "creatorId"
+	ClusterAlertRuleFieldDeploymentRule        = "deploymentRule"
 	ClusterAlertRuleFieldEventRule             = "eventRule"
 	ClusterAlertRuleFieldGroupID               = "groupId"
 	ClusterAlertRuleFieldGroupIntervalSeconds  = "groupIntervalSeconds"
@@ -41,6 +42,7 @@ type ClusterAlertRule struct {
 	ClusterScanRule       *ClusterScanRule   `json:"clusterScanRule,omitempty" yaml:"clusterScanRule,omitempty"`
 	Created               string             `json:"created,omitempty" yaml:"created,omitempty"`
 	CreatorID             string             `json:"creatorId,omitempty" yaml:"creatorId,omitempty"`
+	DeploymentRule        *DeploymentRule    `json:"deploymentRule,omitempty" yaml:"deploymentRule,omitempty"`
 	EventRule             *EventRule         `json:"eventRule,omitempty" yaml:"eventRule,omitempty"`
 	GroupID               string             `json:"groupId,omitempty" yaml:"groupId,omitempty"`
 	GroupIntervalSeconds  int64              `json:"groupIntervalSeconds,omitempty" yaml:"groupIntervalSeconds,omitempty"`
