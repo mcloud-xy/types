@@ -10,3 +10,4 @@
 .vscode/
 Dockerfile.Dapper[0-9]*
 .cache/
+vendor/github.com/rancher/types
