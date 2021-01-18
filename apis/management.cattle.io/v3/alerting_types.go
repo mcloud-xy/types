@@ -288,9 +288,9 @@ type NodeRule struct {
 }
 
 type DeploymentRule struct {
-	Condition           string            `json:"condition,omitempty" norman:"options=hasRestart,default=hasRestart"`
-	MemThreshold        int               `json:"memThreshold,omitempty" norman:"min=1,max=100,default=70"`
-	CPUThreshold        int               `json:"cpuThreshold,omitempty" norman:"min=1,max=100,default=70"`
+	Condition           string            `json:"condition,omitempty" norman:"options=hasRestart"`
+	MemThreshold        int               `json:"memThreshold,omitempty" norman:"min=1,max=100"`
+	CPUThreshold        int               `json:"cpuThreshold,omitempty" norman:"min=1,max=100"`
 	DeploymentName      string            `json:"deploymentName,omitempty"`
 	DeploymentNamespace string            `json:"deploymentNamespace,omitempty"`
 	Selector            map[string]string `json:"selector,omitempty"`
