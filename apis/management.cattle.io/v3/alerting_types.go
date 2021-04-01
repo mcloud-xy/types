@@ -207,6 +207,10 @@ type ClusterAlertRuleSpec struct {
 	MetricRule        *MetricRule        `json:"metricRule,omitempty"`
 	ClusterScanRule   *ClusterScanRule   `json:"clusterScanRule,omitempty"`
 	DeploymentRule    *DeploymentRule    `json:"deploymentRule,omitempty"`
+	TargetType        string             `json:"targetType" norman:"options=deployment|node|metric"`
+	TargetObject      map[string]string  `json:"targetObject"`
+	TargetObjects     map[string]string  `json:"targetObjects"`
+	Rule              *MetricRuleV2      `json:"rule,omitempty"`
 }
 
 func (c *ClusterAlertRuleSpec) ObjClusterName() string {
@@ -294,6 +298,16 @@ type DeploymentRule struct {
 	DeploymentName      string            `json:"deploymentName,omitempty"`
 	DeploymentNamespace string            `json:"deploymentNamespace,omitempty"`
 	Selector            map[string]string `json:"selector,omitempty"`
+}
+
+type MetricRuleV2 struct {
+	Description    string  `json:"description,omitempty"`
+	Duration       string  `json:"duration,omitempty" norman:"required"`
+	Comparison     string  `json:"comparison,omitempty" norman:"type=enum,options=equal|not-equal|greater-than|less-than|greater-or-equal|less-or-equal|has-value,default=equal"`
+	ThresholdValue float64 `json:"thresholdValue,omitempty" norman:"type=float"`
+	Interval       float64 `json:"interval" norman:"type=float"`
+	Metric         string  `json:"metric" norman:"required"`
+	MetricName     string  `json:"metricName" norman:"required"`
 }
 
 type PodRule struct {
