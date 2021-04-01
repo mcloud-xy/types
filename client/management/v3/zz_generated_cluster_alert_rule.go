@@ -26,9 +26,13 @@ const (
 	ClusterAlertRuleFieldOwnerReferences       = "ownerReferences"
 	ClusterAlertRuleFieldRemoved               = "removed"
 	ClusterAlertRuleFieldRepeatIntervalSeconds = "repeatIntervalSeconds"
+	ClusterAlertRuleFieldRule                  = "rule"
 	ClusterAlertRuleFieldSeverity              = "severity"
 	ClusterAlertRuleFieldState                 = "state"
 	ClusterAlertRuleFieldSystemServiceRule     = "systemServiceRule"
+	ClusterAlertRuleFieldTargetObject          = "targetObject"
+	ClusterAlertRuleFieldTargetObjects         = "targetObjects"
+	ClusterAlertRuleFieldTargetType            = "targetType"
 	ClusterAlertRuleFieldTransitioning         = "transitioning"
 	ClusterAlertRuleFieldTransitioningMessage  = "transitioningMessage"
 	ClusterAlertRuleFieldUUID                  = "uuid"
@@ -56,9 +60,13 @@ type ClusterAlertRule struct {
 	OwnerReferences       []OwnerReference   `json:"ownerReferences,omitempty" yaml:"ownerReferences,omitempty"`
 	Removed               string             `json:"removed,omitempty" yaml:"removed,omitempty"`
 	RepeatIntervalSeconds int64              `json:"repeatIntervalSeconds,omitempty" yaml:"repeatIntervalSeconds,omitempty"`
+	Rule                  *MetricRuleV2      `json:"rule,omitempty" yaml:"rule,omitempty"`
 	Severity              string             `json:"severity,omitempty" yaml:"severity,omitempty"`
 	State                 string             `json:"state,omitempty" yaml:"state,omitempty"`
 	SystemServiceRule     *SystemServiceRule `json:"systemServiceRule,omitempty" yaml:"systemServiceRule,omitempty"`
+	TargetObject          map[string]string  `json:"targetObject,omitempty" yaml:"targetObject,omitempty"`
+	TargetObjects         map[string]string  `json:"targetObjects,omitempty" yaml:"targetObjects,omitempty"`
+	TargetType            string             `json:"targetType,omitempty" yaml:"targetType,omitempty"`
 	Transitioning         string             `json:"transitioning,omitempty" yaml:"transitioning,omitempty"`
 	TransitioningMessage  string             `json:"transitioningMessage,omitempty" yaml:"transitioningMessage,omitempty"`
 	UUID                  string             `json:"uuid,omitempty" yaml:"uuid,omitempty"`
