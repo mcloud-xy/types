@@ -308,6 +308,7 @@ type MetricRuleV2 struct {
 	Interval       float64 `json:"interval" norman:"type=float"`
 	Metric         string  `json:"metric" norman:"required"`
 	MetricName     string  `json:"metricName" norman:"required"`
+	Operator       string  `json:"operator"`
 }
 
 type PodRule struct {

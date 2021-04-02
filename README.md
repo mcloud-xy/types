@@ -32,8 +32,10 @@ To generate types you need to update vendor.
     Example:  
     `export GOPATH=/Users/<yourusername>/work/types` or  
     `export GOPATH=/Users/<yourusername>/go`
+5. Run `cp go.mod.src go.mod`
 5. Run `GO111MODULE=off go generate`
 6. Run `unset GOPATH`
+7. Run `git checkout go.mod`
 
 
 ## License
