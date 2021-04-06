@@ -16,7 +16,7 @@ type MetricRuleV2 struct {
 	Comparison     string  `json:"comparison,omitempty" yaml:"comparison,omitempty"`
 	Description    string  `json:"description,omitempty" yaml:"description,omitempty"`
 	Duration       string  `json:"duration,omitempty" yaml:"duration,omitempty"`
-	Interval       float64 `json:"interval,omitempty" yaml:"interval,omitempty"`
+	Interval       string  `json:"interval,omitempty" yaml:"interval,omitempty"`
 	Metric         string  `json:"metric,omitempty" yaml:"metric,omitempty"`
 	MetricName     string  `json:"metricName,omitempty" yaml:"metricName,omitempty"`
 	Operator       string  `json:"operator,omitempty" yaml:"operator,omitempty"`

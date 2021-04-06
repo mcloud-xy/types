@@ -305,7 +305,7 @@ type MetricRuleV2 struct {
 	Duration       string  `json:"duration,omitempty" norman:"required"`
 	Comparison     string  `json:"comparison,omitempty" norman:"type=enum,options=equal|not-equal|greater-than|less-than|greater-or-equal|less-or-equal|has-value,default=equal"`
 	ThresholdValue float64 `json:"thresholdValue,omitempty" norman:"type=float"`
-	Interval       float64 `json:"interval" norman:"type=float"`
+	Interval       string  `json:"interval" norman:"type=string"`
 	Metric         string  `json:"metric" norman:"required"`
 	MetricName     string  `json:"metricName" norman:"required"`
 	Operator       string  `json:"operator"`
