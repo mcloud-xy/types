@@ -27,6 +27,7 @@ const (
 	ClusterAlertRuleFieldRemoved               = "removed"
 	ClusterAlertRuleFieldRepeatIntervalSeconds = "repeatIntervalSeconds"
 	ClusterAlertRuleFieldRule                  = "rule"
+	ClusterAlertRuleFieldScope                 = "scope"
 	ClusterAlertRuleFieldSeverity              = "severity"
 	ClusterAlertRuleFieldState                 = "state"
 	ClusterAlertRuleFieldSystemServiceRule     = "systemServiceRule"
@@ -61,6 +62,7 @@ type ClusterAlertRule struct {
 	Removed               string             `json:"removed,omitempty" yaml:"removed,omitempty"`
 	RepeatIntervalSeconds int64              `json:"repeatIntervalSeconds,omitempty" yaml:"repeatIntervalSeconds,omitempty"`
 	Rule                  *MetricRuleV2      `json:"rule,omitempty" yaml:"rule,omitempty"`
+	Scope                 string             `json:"scope,omitempty" yaml:"scope,omitempty"`
 	Severity              string             `json:"severity,omitempty" yaml:"severity,omitempty"`
 	State                 string             `json:"state,omitempty" yaml:"state,omitempty"`
 	SystemServiceRule     *SystemServiceRule `json:"systemServiceRule,omitempty" yaml:"systemServiceRule,omitempty"`

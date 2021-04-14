@@ -15,6 +15,7 @@ const (
 	ClusterAlertRuleSpecFieldNodeRule              = "nodeRule"
 	ClusterAlertRuleSpecFieldRepeatIntervalSeconds = "repeatIntervalSeconds"
 	ClusterAlertRuleSpecFieldRule                  = "rule"
+	ClusterAlertRuleSpecFieldScope                 = "scope"
 	ClusterAlertRuleSpecFieldSeverity              = "severity"
 	ClusterAlertRuleSpecFieldSystemServiceRule     = "systemServiceRule"
 	ClusterAlertRuleSpecFieldTargetObject          = "targetObject"
@@ -36,6 +37,7 @@ type ClusterAlertRuleSpec struct {
 	NodeRule              *NodeRule          `json:"nodeRule,omitempty" yaml:"nodeRule,omitempty"`
 	RepeatIntervalSeconds int64              `json:"repeatIntervalSeconds,omitempty" yaml:"repeatIntervalSeconds,omitempty"`
 	Rule                  *MetricRuleV2      `json:"rule,omitempty" yaml:"rule,omitempty"`
+	Scope                 string             `json:"scope,omitempty" yaml:"scope,omitempty"`
 	Severity              string             `json:"severity,omitempty" yaml:"severity,omitempty"`
 	SystemServiceRule     *SystemServiceRule `json:"systemServiceRule,omitempty" yaml:"systemServiceRule,omitempty"`
 	TargetObject          map[string]string  `json:"targetObject,omitempty" yaml:"targetObject,omitempty"`
