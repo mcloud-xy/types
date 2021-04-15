@@ -12,6 +12,7 @@ const (
 	ClusterAlertGroupFieldCreated               = "created"
 	ClusterAlertGroupFieldCreatorID             = "creatorId"
 	ClusterAlertGroupFieldDescription           = "description"
+	ClusterAlertGroupFieldDesiredState          = "desiredState"
 	ClusterAlertGroupFieldGroupIntervalSeconds  = "groupIntervalSeconds"
 	ClusterAlertGroupFieldGroupWaitSeconds      = "groupWaitSeconds"
 	ClusterAlertGroupFieldLabels                = "labels"
@@ -35,6 +36,7 @@ type ClusterAlertGroup struct {
 	Created               string            `json:"created,omitempty" yaml:"created,omitempty"`
 	CreatorID             string            `json:"creatorId,omitempty" yaml:"creatorId,omitempty"`
 	Description           string            `json:"description,omitempty" yaml:"description,omitempty"`
+	DesiredState          string            `json:"desiredState,omitempty" yaml:"desiredState,omitempty"`
 	GroupIntervalSeconds  int64             `json:"groupIntervalSeconds,omitempty" yaml:"groupIntervalSeconds,omitempty"`
 	GroupWaitSeconds      int64             `json:"groupWaitSeconds,omitempty" yaml:"groupWaitSeconds,omitempty"`
 	Labels                map[string]string `json:"labels,omitempty" yaml:"labels,omitempty"`

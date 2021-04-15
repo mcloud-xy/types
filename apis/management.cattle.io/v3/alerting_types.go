@@ -118,6 +118,9 @@ type TargetSystemService struct {
 
 type AlertStatus struct {
 	AlertState string `json:"alertState,omitempty" norman:"options=active|inactive|alerting|muted,default=active"`
+
+	// 设置的状态。不受实时告警状态影响。
+	DesiredState string `json:"desiredState,omitempty" norman:"options=active|inactive|muted"`
 }
 
 type ClusterAlertGroup struct {
