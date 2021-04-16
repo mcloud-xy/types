@@ -215,6 +215,7 @@ type ClusterAlertRuleSpec struct {
 	TargetObjects     map[string]string  `json:"targetObjects"`
 	Rule              *MetricRuleV2      `json:"rule,omitempty"`
 	Scope             string             `json:"scope"`
+	IDC               string             `json:"idc"`
 }
 
 func (c *ClusterAlertRuleSpec) ObjClusterName() string {
