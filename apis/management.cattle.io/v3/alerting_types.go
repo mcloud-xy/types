@@ -450,6 +450,7 @@ type AlertRecord struct {
 	Comparison     string  `json:"comparison"`
 	Duration       string  `json:"duration"`
 	ThresholdValue float64 `json:"thresholdValue"`
+	CurrentValue   float64 `json:"currentValue"`
 
 	// 告警对象
 	TargetType   string `json:"targetType"`
