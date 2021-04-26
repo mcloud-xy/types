@@ -36,6 +36,14 @@ To generate types you need to update vendor.
 5. Run `GO111MODULE=off go generate`
 6. Run `unset GOPATH`
 7. Run `git checkout go.mod`
+8. Run `git tag `TZ=UTC git --no-pager show \
+          --quiet \
+          --abbrev=12 \
+          --date='format-local:%Y%m%d%H%M%S' \
+          --format="v0.0.0-%cd-%h"`
+          `
+9. Run `git push mt --tags`
+ 
 
 
 ## License
