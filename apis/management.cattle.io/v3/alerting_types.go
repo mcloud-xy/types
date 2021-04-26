@@ -431,30 +431,35 @@ type HTTPClientConfig struct {
 type AlertRecord struct {
 
 	// 告警规则相关
-	AlertName   string `json:"alert_name"`
-	ClusterName string `json:"cluster_name"`
+	AlertName string `json:"alertName"`
+	// 状态
+	AlertState string `json:"alertState"`
 
-	RuleID   string `json:"rule_id"`
+	// 集群相关
+	ClusterName string `json:"clusterName"`
+	ClusterID   string `json:"clusterId"`
+	IDC         string `json:"idc"`
+
+	RuleID   string `json:"ruleId"`
 	Severity string `json:"severity"`
 
-	MetricName string `json:"metric_name"`
-	Metric     string `json:"metric"`
-	Expression string `json:"expression"`
-	Comparison string `json:"comparison"`
-	Duration   string `json:"duration"`
-
-	// 状态
-	AlertState string `json:"alert_state"`
+	// 告警条件
+	MetricName     string  `json:"metricName"`
+	Metric         string  `json:"metric"`
+	Expression     string  `json:"expression"`
+	Comparison     string  `json:"comparison"`
+	Duration       string  `json:"duration"`
+	ThresholdValue float64 `json:"thresholdValue"`
 
 	// 告警对象
-	TargetType   string `json:"target_type"`
-	TargetObject string `json:"target_object"`
+	TargetType   string `json:"targetType"`
+	TargetObject string `json:"targetObject"`
 
 	// 告警持续时长。
 	// Duration int64  计算字段
-	StartTs int64 `json:"start_ts"`
-	EndTs   int64 `json:"end_ts"`
-	MuteTs  int64 `json:"mute_ts"`
+	StartTs int64 `json:"startTs"`
+	EndTs   int64 `json:"endTs"`
+	MuteTs  int64 `json:"muteTs"`
 
 	//接收人
 	Recipients []*Recipient
