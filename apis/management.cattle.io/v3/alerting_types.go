@@ -429,9 +429,13 @@ type HTTPClientConfig struct {
 
 // 告警记录
 type AlertRecord struct {
+	ID          string `json:"id"`
+	FingerPrint string `json:"fingerprint"`
 
 	// 告警规则相关
-	AlertName string `json:"alertName"`
+	AlertName   string `json:"alertName"`
+	Description string `json:"description"`
+
 	// 状态
 	AlertState string `json:"alertState"`
 
@@ -444,11 +448,12 @@ type AlertRecord struct {
 	Severity string `json:"severity"`
 
 	// 告警条件
-	MetricName     string  `json:"metricName"`
-	Metric         string  `json:"metric"`
-	Expression     string  `json:"expression"`
-	Comparison     string  `json:"comparison"`
-	Duration       string  `json:"duration"`
+	MetricName string `json:"metricName"`
+	Metric     string `json:"metric"`
+	Expression string `json:"expression"`
+	Comparison string `json:"comparison"`
+	Duration   string `json:"duration"`
+
 	ThresholdValue float64 `json:"thresholdValue"`
 	CurrentValue   float64 `json:"currentValue"`
 
