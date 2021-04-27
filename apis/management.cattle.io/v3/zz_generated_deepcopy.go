@@ -157,14 +157,8 @@ func (in *AlertRecord) DeepCopyInto(out *AlertRecord) {
 	*out = *in
 	if in.Recipients != nil {
 		in, out := &in.Recipients, &out.Recipients
-		*out = make([]*Recipient, len(*in))
-		for i := range *in {
-			if (*in)[i] != nil {
-				in, out := &(*in)[i], &(*out)[i]
-				*out = new(Recipient)
-				**out = **in
-			}
-		}
+		*out = make([]Recipient, len(*in))
+		copy(*out, *in)
 	}
 	return
 }

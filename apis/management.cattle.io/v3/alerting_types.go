@@ -463,5 +463,7 @@ type AlertRecord struct {
 	MuteTs  int64 `json:"muteTs"`
 
 	//接收人
-	Recipients []*Recipient
+	GroupID    string      `json:"groupId"`
+	Recipients []Recipient `json:"recipients"`
+	GroupName  string      `json:"groupName"` // 告警组
 }
