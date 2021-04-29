@@ -463,9 +463,10 @@ type AlertRecord struct {
 
 	// 告警持续时长。
 	// Duration int64  计算字段
-	StartTs int64 `json:"startTs"`
-	EndTs   int64 `json:"endTs"`
-	MuteTs  int64 `json:"muteTs"`
+	StartTs  int64 `json:"startTs"`
+	EndTs    int64 `json:"endTs"`
+	MuteTs   int64 `json:"muteTs"`
+	UpdateTs int64 `json:"updateTs"`
 
 	//接收人
 	GroupID    string      `json:"groupId"`

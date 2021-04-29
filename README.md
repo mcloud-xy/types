@@ -35,7 +35,7 @@ To generate types you need to update vendor.
 5. Run `cp go.mod.src go.mod`
 5. Run `GO111MODULE=off go generate`
 6. Run `unset GOPATH`
-7. Run `git checkout go.mod go.sum `
+7. Run `git checkout go.mod go.sum && git add .`
 8. Run `git tag `TZ=UTC git --no-pager show \
           --quiet \
           --abbrev=12 \
