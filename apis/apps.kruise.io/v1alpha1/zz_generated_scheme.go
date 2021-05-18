@@ -1,4 +1,4 @@
-package v3
+package v1alpha1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -7,8 +7,8 @@ import (
 )
 
 const (
-	GroupName = "management.cattle.io"
-	Version   = "v3"
+	GroupName = "apps.kruise.io"
+	Version   = "v1alpha1"
 )
 
 // SchemeGroupVersion is group version used to register these objects
@@ -34,7 +34,7 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	// TODO this gets cleaned up when the types are fixed
 	scheme.AddKnownTypes(SchemeGroupVersion,
 
-		&UserAttribute{},
+		&CloneSetList{},
 	)
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil

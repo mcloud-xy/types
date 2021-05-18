@@ -25,6 +25,8 @@ import (
 	storagev1 "k8s.io/api/storage/v1"
 	k8sschema "k8s.io/apimachinery/pkg/runtime/schema"
 	apiregistrationv1 "k8s.io/kube-aggregator/pkg/apis/apiregistration/v1"
+
+	kruiseV1 "github.com/openkruise/kruise-api/apps/v1alpha1"
 )
 
 func main() {
@@ -71,6 +73,7 @@ func main() {
 	generator.GenerateNativeTypes(knetworkingv1.SchemeGroupVersion, []interface{}{
 		knetworkingv1.NetworkPolicy{},
 	}, nil)
+
 	generator.GenerateNativeTypes(batchv1.SchemeGroupVersion, []interface{}{
 		batchv1.Job{},
 	}, nil)
@@ -124,4 +127,8 @@ func main() {
 			apiregistrationv1.APIService{},
 		},
 	)
+
+	generator.GenerateNativeTypes(kruiseV1.SchemeGroupVersion, []interface{}{
+		kruiseV1.CloneSet{},
+	}, nil)
 }

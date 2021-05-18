@@ -1,4 +1,4 @@
-package v3
+package v1alpha1
 
 import (
 	"context"
@@ -20,7 +20,7 @@ type Interface interface {
 	RESTClient() rest.Interface
 	controller.Starter
 
-	UserAttributesGetter
+	CloneSetsGetter
 }
 
 type Client struct {
@@ -28,7 +28,7 @@ type Client struct {
 	restClient rest.Interface
 	starters   []controller.Starter
 
-	userAttributeControllers map[string]UserAttributeController
+	cloneSetControllers map[string]CloneSetController
 }
 
 func NewForConfig(config rest.Config) (Interface, error) {
@@ -44,7 +44,7 @@ func NewForConfig(config rest.Config) (Interface, error) {
 	return &Client{
 		restClient: restClient,
 
-		userAttributeControllers: map[string]UserAttributeController{},
+		cloneSetControllers: map[string]CloneSetController{},
 	}, nil
 }
 
@@ -60,13 +60,13 @@ func (c *Client) Start(ctx context.Context, threadiness int) error {
 	return controller.Start(ctx, threadiness, c.starters...)
 }
 
-type UserAttributesGetter interface {
-	UserAttributes(namespace string) UserAttributeInterface
+type CloneSetsGetter interface {
+	CloneSets(namespace string) CloneSetInterface
 }
 
-func (c *Client) UserAttributes(namespace string) UserAttributeInterface {
-	objectClient := objectclient.NewObjectClient(namespace, c.restClient, &UserAttributeResource, UserAttributeGroupVersionKind, userAttributeFactory{})
-	return &userAttributeClient{
+func (c *Client) CloneSets(namespace string) CloneSetInterface {
+	objectClient := objectclient.NewObjectClient(namespace, c.restClient, &CloneSetResource, CloneSetGroupVersionKind, cloneSetFactory{})
+	return &cloneSetClient{
 		ns:           namespace,
 		client:       c,
 		objectClient: objectClient,

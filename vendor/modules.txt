@@ -51,6 +51,10 @@ github.com/matttproud/golang_protobuf_extensions/pbutil
 github.com/modern-go/concurrent
 # github.com/modern-go/reflect2 v1.0.1
 github.com/modern-go/reflect2
+# github.com/openkruise/kruise-api v0.8.0
+github.com/openkruise/kruise-api/apps/pub
+github.com/openkruise/kruise-api/apps/v1alpha1
+github.com/openkruise/kruise-api/utils/scheme
 # github.com/pkg/errors v0.8.1
 github.com/pkg/errors
 # github.com/prometheus/client_golang v1.4.0
@@ -88,6 +92,40 @@ github.com/rancher/norman/types/factory
 github.com/rancher/norman/types/mapper
 github.com/rancher/norman/types/slice
 github.com/rancher/norman/types/values
+# github.com/rancher/types v0.0.0-00010101000000-000000000000 => ./
+github.com/rancher/types/apis/apiregistration.k8s.io/v1
+github.com/rancher/types/apis/apps/v1
+github.com/rancher/types/apis/autoscaling/v2beta2
+github.com/rancher/types/apis/batch/v1
+github.com/rancher/types/apis/batch/v1beta1
+github.com/rancher/types/apis/cluster.cattle.io/v3
+github.com/rancher/types/apis/cluster.cattle.io/v3/schema
+github.com/rancher/types/apis/core/v1
+github.com/rancher/types/apis/extensions/v1beta1
+github.com/rancher/types/apis/management.cattle.io/v3
+github.com/rancher/types/apis/management.cattle.io/v3/schema
+github.com/rancher/types/apis/management.cattle.io/v3public
+github.com/rancher/types/apis/management.cattle.io/v3public/schema
+github.com/rancher/types/apis/monitoring.coreos.com/v1
+github.com/rancher/types/apis/networking.istio.io/v1alpha3
+github.com/rancher/types/apis/networking.k8s.io/v1
+github.com/rancher/types/apis/policy/v1beta1
+github.com/rancher/types/apis/project.cattle.io/v3
+github.com/rancher/types/apis/project.cattle.io/v3/schema
+github.com/rancher/types/apis/rbac.authorization.k8s.io/v1
+github.com/rancher/types/apis/storage.k8s.io/v1
+github.com/rancher/types/client/cluster/v3
+github.com/rancher/types/client/management/v3
+github.com/rancher/types/client/project/v3
+github.com/rancher/types/condition
+github.com/rancher/types/config/dialer
+github.com/rancher/types/factory
+github.com/rancher/types/generator
+github.com/rancher/types/image
+github.com/rancher/types/mapper
+github.com/rancher/types/peermanager
+github.com/rancher/types/status
+github.com/rancher/types/user
 # github.com/rancher/wrangler v0.5.4-0.20200520040055-b8d49179cfc8
 github.com/rancher/wrangler/pkg/data
 github.com/rancher/wrangler/pkg/data/convert
