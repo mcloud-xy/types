@@ -3,6 +3,8 @@ package schema
 import (
 	"net/http"
 
+	kruiseV1 "github.com/openkruise/kruise-api/apps/v1alpha1"
+
 	monitoringv1 "github.com/coreos/prometheus-operator/pkg/apis/monitoring/v1"
 	istiov1alpha3 "github.com/knative/pkg/apis/istio/v1alpha3"
 	"github.com/rancher/norman/types"
@@ -49,7 +51,8 @@ var (
 		Init(pipelineTypes).
 		Init(monitoringTypes).
 		Init(autoscalingTypes).
-		Init(istioTypes)
+		Init(istioTypes).
+		Init(cloneSetTypes)
 )
 
 func configMapTypes(schemas *types.Schemas) *types.Schemas {
@@ -75,6 +78,13 @@ type CronJobConfig struct {
 }
 
 type JobConfig struct {
+}
+
+type CloneSetConfig struct {
+}
+
+type cloneSetConfigOverride struct {
+	CloneSetConfig CloneSetConfig
 }
 
 type deploymentConfigOverride struct {
@@ -109,7 +119,7 @@ func workloadTypes(schemas *types.Schemas) *types.Schemas {
 	return schemas.MustImportAndCustomize(&Version, v3.Workload{},
 		func(schema *types.Schema) {
 			toInclude := []string{"deployment", "replicationController", "statefulSet",
-				"daemonSet", "job", "cronJob", "replicaSet"}
+				"daemonSet", "job", "cronJob", "replicaSet", "cloneSet"}
 			for _, name := range toInclude {
 				baseSchema := schemas.Schema(&Version, name)
 				if baseSchema == nil {
@@ -1124,4 +1134,14 @@ func istioTypes(schemas *types.Schemas) *types.Schemas {
 		MustImport(&Version, istiov1alpha3.Gateway{}, projectOverride{}, struct {
 			Status interface{}
 		}{})
+}
+
+func cloneSetTypes(schemas *types.Schemas) *types.Schemas {
+	return schemas.MustImport(&Version, kruiseV1.CloneSet{}, projectOverride{}, struct {
+		Status interface{}
+	}{})
+	//return schemas.MustImport(&Version, kruiseV1.CloneSet{}, cloneSetConfigOverride{}).
+	//	MustImportAndCustomize(&Version, kruiseV1.CloneSet{}, func(schema *types.Schema) {
+	//		schema.BaseType = "workload"
+	//	}).MustImport(&Version, kruiseV1.CloneSetSpec{}, nil)
 }

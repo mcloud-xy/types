@@ -19,6 +19,7 @@ var (
 		"job":                   "Job",
 		"cronjob":               "CronJob",
 		"replicaset":            "ReplicaSet",
+		"cloneset":              "CloneSet",
 	}
 	groupVersionMap = map[string]string{
 		"deployment":            "apps/v1beta2",
@@ -28,6 +29,7 @@ var (
 		"job":                   "batch/v1",
 		"cronjob":               "batch/v1beta1",
 		"replicaset":            "apps/v1beta2",
+		"cloneset":              "apps/v1alpha1",
 	}
 )
 
