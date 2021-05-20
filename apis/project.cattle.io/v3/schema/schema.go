@@ -1137,9 +1137,7 @@ func istioTypes(schemas *types.Schemas) *types.Schemas {
 }
 
 func cloneSetTypes(schemas *types.Schemas) *types.Schemas {
-	return schemas.MustImport(&Version, kruiseV1.CloneSet{}, projectOverride{}, struct {
-		Status interface{}
-	}{})
+	return schemas.MustImport(&Version, kruiseV1.CloneSet{})
 	//return schemas.MustImport(&Version, kruiseV1.CloneSet{}, cloneSetConfigOverride{}).
 	//	MustImportAndCustomize(&Version, kruiseV1.CloneSet{}, func(schema *types.Schema) {
 	//		schema.BaseType = "workload"
