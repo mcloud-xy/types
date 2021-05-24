@@ -34,6 +34,8 @@ const (
 	WorkloadFieldJobConfig                     = "jobConfig"
 	WorkloadFieldJobStatus                     = "jobStatus"
 	WorkloadFieldLabels                        = "labels"
+	WorkloadFieldLifecycle                     = "lifecycle"
+	WorkloadFieldMinReadySeconds               = "minReadySeconds"
 	WorkloadFieldName                          = "name"
 	WorkloadFieldNamespaceId                   = "namespaceId"
 	WorkloadFieldNodeID                        = "nodeId"
@@ -47,13 +49,16 @@ const (
 	WorkloadFieldRemoved                       = "removed"
 	WorkloadFieldReplicaSetConfig              = "replicaSetConfig"
 	WorkloadFieldReplicaSetStatus              = "replicaSetStatus"
+	WorkloadFieldReplicas                      = "replicas"
 	WorkloadFieldReplicationControllerConfig   = "replicationControllerConfig"
 	WorkloadFieldReplicationControllerStatus   = "replicationControllerStatus"
 	WorkloadFieldRestartPolicy                 = "restartPolicy"
+	WorkloadFieldRevisionHistoryLimit          = "revisionHistoryLimit"
 	WorkloadFieldRunAsGroup                    = "runAsGroup"
 	WorkloadFieldRunAsNonRoot                  = "runAsNonRoot"
 	WorkloadFieldRuntimeClassName              = "runtimeClassName"
 	WorkloadFieldScale                         = "scale"
+	WorkloadFieldScaleStrategy                 = "scaleStrategy"
 	WorkloadFieldScheduling                    = "scheduling"
 	WorkloadFieldSelector                      = "selector"
 	WorkloadFieldServiceAccountName            = "serviceAccountName"
@@ -61,15 +66,19 @@ const (
 	WorkloadFieldState                         = "state"
 	WorkloadFieldStatefulSetConfig             = "statefulSetConfig"
 	WorkloadFieldStatefulSetStatus             = "statefulSetStatus"
+	WorkloadFieldStatus                        = "status"
 	WorkloadFieldSubdomain                     = "subdomain"
 	WorkloadFieldSysctls                       = "sysctls"
 	WorkloadFieldTTLSecondsAfterFinished       = "ttlSecondsAfterFinished"
+	WorkloadFieldTemplate                      = "template"
 	WorkloadFieldTerminationGracePeriodSeconds = "terminationGracePeriodSeconds"
 	WorkloadFieldTopologySpreadConstraints     = "topologySpreadConstraints"
 	WorkloadFieldTransitioning                 = "transitioning"
 	WorkloadFieldTransitioningMessage          = "transitioningMessage"
 	WorkloadFieldUUID                          = "uuid"
 	WorkloadFieldUid                           = "uid"
+	WorkloadFieldUpdateStrategy                = "updateStrategy"
+	WorkloadFieldVolumeClaimTemplates          = "volumeClaimTemplates"
 	WorkloadFieldVolumes                       = "volumes"
 	WorkloadFieldWindowsOptions                = "windowsOptions"
 	WorkloadFieldWorkloadAnnotations           = "workloadAnnotations"
@@ -107,6 +116,8 @@ type Workload struct {
 	JobConfig                     *JobConfig                     `json:"jobConfig,omitempty" yaml:"jobConfig,omitempty"`
 	JobStatus                     *JobStatus                     `json:"jobStatus,omitempty" yaml:"jobStatus,omitempty"`
 	Labels                        map[string]string              `json:"labels,omitempty" yaml:"labels,omitempty"`
+	Lifecycle                     *Lifecycle                     `json:"lifecycle,omitempty" yaml:"lifecycle,omitempty"`
+	MinReadySeconds               int64                          `json:"minReadySeconds,omitempty" yaml:"minReadySeconds,omitempty"`
 	Name                          string                         `json:"name,omitempty" yaml:"name,omitempty"`
 	NamespaceId                   string                         `json:"namespaceId,omitempty" yaml:"namespaceId,omitempty"`
 	NodeID                        string                         `json:"nodeId,omitempty" yaml:"nodeId,omitempty"`
@@ -120,13 +131,16 @@ type Workload struct {
 	Removed                       string                         `json:"removed,omitempty" yaml:"removed,omitempty"`
 	ReplicaSetConfig              *ReplicaSetConfig              `json:"replicaSetConfig,omitempty" yaml:"replicaSetConfig,omitempty"`
 	ReplicaSetStatus              *ReplicaSetStatus              `json:"replicaSetStatus,omitempty" yaml:"replicaSetStatus,omitempty"`
+	Replicas                      *int64                         `json:"replicas,omitempty" yaml:"replicas,omitempty"`
 	ReplicationControllerConfig   *ReplicationControllerConfig   `json:"replicationControllerConfig,omitempty" yaml:"replicationControllerConfig,omitempty"`
 	ReplicationControllerStatus   *ReplicationControllerStatus   `json:"replicationControllerStatus,omitempty" yaml:"replicationControllerStatus,omitempty"`
 	RestartPolicy                 string                         `json:"restartPolicy,omitempty" yaml:"restartPolicy,omitempty"`
+	RevisionHistoryLimit          *int64                         `json:"revisionHistoryLimit,omitempty" yaml:"revisionHistoryLimit,omitempty"`
 	RunAsGroup                    *int64                         `json:"runAsGroup,omitempty" yaml:"runAsGroup,omitempty"`
 	RunAsNonRoot                  *bool                          `json:"runAsNonRoot,omitempty" yaml:"runAsNonRoot,omitempty"`
 	RuntimeClassName              string                         `json:"runtimeClassName,omitempty" yaml:"runtimeClassName,omitempty"`
 	Scale                         *int64                         `json:"scale,omitempty" yaml:"scale,omitempty"`
+	ScaleStrategy                 *CloneSetScaleStrategy         `json:"scaleStrategy,omitempty" yaml:"scaleStrategy,omitempty"`
 	Scheduling                    *Scheduling                    `json:"scheduling,omitempty" yaml:"scheduling,omitempty"`
 	Selector                      *LabelSelector                 `json:"selector,omitempty" yaml:"selector,omitempty"`
 	ServiceAccountName            string                         `json:"serviceAccountName,omitempty" yaml:"serviceAccountName,omitempty"`
@@ -134,15 +148,19 @@ type Workload struct {
 	State                         string                         `json:"state,omitempty" yaml:"state,omitempty"`
 	StatefulSetConfig             *StatefulSetConfig             `json:"statefulSetConfig,omitempty" yaml:"statefulSetConfig,omitempty"`
 	StatefulSetStatus             *StatefulSetStatus             `json:"statefulSetStatus,omitempty" yaml:"statefulSetStatus,omitempty"`
+	Status                        *CloneSetStatus                `json:"status,omitempty" yaml:"status,omitempty"`
 	Subdomain                     string                         `json:"subdomain,omitempty" yaml:"subdomain,omitempty"`
 	Sysctls                       []Sysctl                       `json:"sysctls,omitempty" yaml:"sysctls,omitempty"`
 	TTLSecondsAfterFinished       *int64                         `json:"ttlSecondsAfterFinished,omitempty" yaml:"ttlSecondsAfterFinished,omitempty"`
+	Template                      *PodTemplateSpec               `json:"template,omitempty" yaml:"template,omitempty"`
 	TerminationGracePeriodSeconds *int64                         `json:"terminationGracePeriodSeconds,omitempty" yaml:"terminationGracePeriodSeconds,omitempty"`
 	TopologySpreadConstraints     []TopologySpreadConstraint     `json:"topologySpreadConstraints,omitempty" yaml:"topologySpreadConstraints,omitempty"`
 	Transitioning                 string                         `json:"transitioning,omitempty" yaml:"transitioning,omitempty"`
 	TransitioningMessage          string                         `json:"transitioningMessage,omitempty" yaml:"transitioningMessage,omitempty"`
 	UUID                          string                         `json:"uuid,omitempty" yaml:"uuid,omitempty"`
 	Uid                           *int64                         `json:"uid,omitempty" yaml:"uid,omitempty"`
+	UpdateStrategy                *CloneSetUpdateStrategy        `json:"updateStrategy,omitempty" yaml:"updateStrategy,omitempty"`
+	VolumeClaimTemplates          []PersistentVolumeClaim        `json:"volumeClaimTemplates,omitempty" yaml:"volumeClaimTemplates,omitempty"`
 	Volumes                       []Volume                       `json:"volumes,omitempty" yaml:"volumes,omitempty"`
 	WindowsOptions                *WindowsSecurityContextOptions `json:"windowsOptions,omitempty" yaml:"windowsOptions,omitempty"`
 	WorkloadAnnotations           map[string]string              `json:"workloadAnnotations,omitempty" yaml:"workloadAnnotations,omitempty"`

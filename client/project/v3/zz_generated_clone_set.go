@@ -13,7 +13,9 @@ const (
 	CloneSetFieldLifecycle            = "lifecycle"
 	CloneSetFieldMinReadySeconds      = "minReadySeconds"
 	CloneSetFieldName                 = "name"
+	CloneSetFieldNamespaceId          = "namespaceId"
 	CloneSetFieldOwnerReferences      = "ownerReferences"
+	CloneSetFieldProjectID            = "projectId"
 	CloneSetFieldRemoved              = "removed"
 	CloneSetFieldReplicas             = "replicas"
 	CloneSetFieldRevisionHistoryLimit = "revisionHistoryLimit"
@@ -38,7 +40,9 @@ type CloneSet struct {
 	Lifecycle            *Lifecycle              `json:"lifecycle,omitempty" yaml:"lifecycle,omitempty"`
 	MinReadySeconds      int64                   `json:"minReadySeconds,omitempty" yaml:"minReadySeconds,omitempty"`
 	Name                 string                  `json:"name,omitempty" yaml:"name,omitempty"`
+	NamespaceId          string                  `json:"namespaceId,omitempty" yaml:"namespaceId,omitempty"`
 	OwnerReferences      []OwnerReference        `json:"ownerReferences,omitempty" yaml:"ownerReferences,omitempty"`
+	ProjectID            string                  `json:"projectId,omitempty" yaml:"projectId,omitempty"`
 	Removed              string                  `json:"removed,omitempty" yaml:"removed,omitempty"`
 	Replicas             *int64                  `json:"replicas,omitempty" yaml:"replicas,omitempty"`
 	RevisionHistoryLimit *int64                  `json:"revisionHistoryLimit,omitempty" yaml:"revisionHistoryLimit,omitempty"`

@@ -102,6 +102,7 @@ type Config struct {
 	DaemonSets                     map[string]projectClient.DaemonSet                     `json:"daemonSets,omitempty" yaml:"daemonSets,omitempty"`
 	Jobs                           map[string]projectClient.Job                           `json:"jobs,omitempty" yaml:"jobs,omitempty"`
 	CronJobs                       map[string]projectClient.CronJob                       `json:"cronJobs,omitempty" yaml:"cronJobs,omitempty"`
+	CloneSets                      map[string]projectClient.CloneSet                      `json:"cloneSets,omitempty" yaml:"cloneSets,omitempty"`
 	Workloads                      map[string]projectClient.Workload                      `json:"workloads,omitempty" yaml:"workloads,omitempty"`
 	Apps                           map[string]projectClient.App                           `json:"apps,omitempty" yaml:"apps,omitempty"`
 	AppRevisions                   map[string]projectClient.AppRevision                   `json:"appRevisions,omitempty" yaml:"appRevisions,omitempty"`
@@ -120,5 +121,4 @@ type Config struct {
 	VirtualServices                map[string]projectClient.VirtualService                `json:"virtualServices,omitempty" yaml:"virtualServices,omitempty"`
 	DestinationRules               map[string]projectClient.DestinationRule               `json:"destinationRules,omitempty" yaml:"destinationRules,omitempty"`
 	Gateways                       map[string]projectClient.Gateway                       `json:"gateways,omitempty" yaml:"gateways,omitempty"`
-	CloneSets                      map[string]projectClient.CloneSet                      `json:"cloneSets,omitempty" yaml:"cloneSets,omitempty"`
 }

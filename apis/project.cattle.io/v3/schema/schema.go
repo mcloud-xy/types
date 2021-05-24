@@ -46,13 +46,13 @@ var (
 		Init(jobTypes).
 		Init(cronJobTypes).
 		Init(podTemplateSpecTypes).
+		Init(cloneSetTypes).
 		Init(workloadTypes).
 		Init(appTypes).
 		Init(pipelineTypes).
 		Init(monitoringTypes).
 		Init(autoscalingTypes).
-		Init(istioTypes).
-		Init(cloneSetTypes)
+		Init(istioTypes)
 )
 
 func configMapTypes(schemas *types.Schemas) *types.Schemas {
@@ -119,11 +119,12 @@ func workloadTypes(schemas *types.Schemas) *types.Schemas {
 	return schemas.MustImportAndCustomize(&Version, v3.Workload{},
 		func(schema *types.Schema) {
 			toInclude := []string{"deployment", "replicationController", "statefulSet",
-				"daemonSet", "job", "cronJob", "replicaSet", "cloneSet"}
+				"daemonSet", "job", "cronJob", "replicaSet", "cloneset"}
 			for _, name := range toInclude {
 				baseSchema := schemas.Schema(&Version, name)
 				if baseSchema == nil {
-					continue
+					panic(name)
+					//continue
 				}
 				for name, field := range baseSchema.ResourceFields {
 					schema.ResourceFields[name] = field
@@ -444,6 +445,33 @@ func cronJobTypes(schemas *types.Schemas) *types.Schemas {
 			PublicEndpoints string `json:"publicEndpoints" norman:"type=array[publicEndpoint],nocreate,noupdate"`
 			WorkloadMetrics string `json:"workloadMetrics" norman:"type=array[workloadMetric]"`
 		}{})
+}
+
+func cloneSetTypes(schemas *types.Schemas) *types.Schemas {
+	return schemas.TypeName("cloneSet", kruiseV1.CloneSet{}).
+		MustImportAndCustomize(&Version, kruiseV1.CloneSet{}, func(schema *types.Schema) {
+			schema.BaseType = "workload"
+		}, projectOverride{}).MustImport(&Version, kruiseV1.CloneSetSpec{}).
+		MustImport(&Version, v3.WorkloadMetric{}).
+		AddMapperForType(&Version, kruiseV1.CloneSet{},
+			NewWorkloadTypeMapper(),
+			//&m.Move{
+			//	From: "status",
+			//	To:   "cloneSetStatus",
+			//},
+			&m.Move{
+				From: "namespace",
+				To:   "namespaceId",
+			},
+		).AddMapperForType(&Version, kruiseV1.CloneSetSpec{},
+		&m.BatchMove{
+			From: []string{
+				"minReadySeconds",
+				"updateStrategy",
+			},
+			To: "cloneSetConfig",
+		},
+	)
 }
 
 func deploymentTypes(schemas *types.Schemas) *types.Schemas {
@@ -1134,12 +1162,4 @@ func istioTypes(schemas *types.Schemas) *types.Schemas {
 		MustImport(&Version, istiov1alpha3.Gateway{}, projectOverride{}, struct {
 			Status interface{}
 		}{})
-}
-
-func cloneSetTypes(schemas *types.Schemas) *types.Schemas {
-	return schemas.MustImport(&Version, kruiseV1.CloneSet{})
-	//return schemas.MustImport(&Version, kruiseV1.CloneSet{}, cloneSetConfigOverride{}).
-	//	MustImportAndCustomize(&Version, kruiseV1.CloneSet{}, func(schema *types.Schema) {
-	//		schema.BaseType = "workload"
-	//	}).MustImport(&Version, kruiseV1.CloneSetSpec{}, nil)
 }

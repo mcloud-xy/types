@@ -32,6 +32,7 @@ type Client struct {
 	DaemonSet                     DaemonSetOperations
 	Job                           JobOperations
 	CronJob                       CronJobOperations
+	CloneSet                      CloneSetOperations
 	Workload                      WorkloadOperations
 	App                           AppOperations
 	AppRevision                   AppRevisionOperations
@@ -50,7 +51,6 @@ type Client struct {
 	VirtualService                VirtualServiceOperations
 	DestinationRule               DestinationRuleOperations
 	Gateway                       GatewayOperations
-	CloneSet                      CloneSetOperations
 }
 
 func NewClient(opts *clientbase.ClientOpts) (*Client, error) {
@@ -88,6 +88,7 @@ func NewClient(opts *clientbase.ClientOpts) (*Client, error) {
 	client.DaemonSet = newDaemonSetClient(client)
 	client.Job = newJobClient(client)
 	client.CronJob = newCronJobClient(client)
+	client.CloneSet = newCloneSetClient(client)
 	client.Workload = newWorkloadClient(client)
 	client.App = newAppClient(client)
 	client.AppRevision = newAppRevisionClient(client)
@@ -106,7 +107,6 @@ func NewClient(opts *clientbase.ClientOpts) (*Client, error) {
 	client.VirtualService = newVirtualServiceClient(client)
 	client.DestinationRule = newDestinationRuleClient(client)
 	client.Gateway = newGatewayClient(client)
-	client.CloneSet = newCloneSetClient(client)
 
 	return client, nil
 }

@@ -7,6 +7,7 @@ import (
 	monitoring "github.com/coreos/prometheus-operator/pkg/apis/monitoring"
 	monitoringv1 "github.com/coreos/prometheus-operator/pkg/apis/monitoring/v1"
 	istiov1alpha3 "github.com/knative/pkg/apis/istio/v1alpha3"
+	kruiseV1 "github.com/openkruise/kruise-api/apps/v1alpha1"
 	clusterSchema "github.com/rancher/types/apis/cluster.cattle.io/v3/schema"
 	managementSchema "github.com/rancher/types/apis/management.cattle.io/v3/schema"
 	publicSchema "github.com/rancher/types/apis/management.cattle.io/v3public/schema"
@@ -25,8 +26,6 @@ import (
 	storagev1 "k8s.io/api/storage/v1"
 	k8sschema "k8s.io/apimachinery/pkg/runtime/schema"
 	apiregistrationv1 "k8s.io/kube-aggregator/pkg/apis/apiregistration/v1"
-
-	kruiseV1 "github.com/openkruise/kruise-api/apps/v1alpha1"
 )
 
 func main() {
