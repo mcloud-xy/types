@@ -14,6 +14,7 @@ const (
 	ClusterAlertRuleSpecFieldInherited             = "inherited"
 	ClusterAlertRuleSpecFieldMetricRule            = "metricRule"
 	ClusterAlertRuleSpecFieldNodeRule              = "nodeRule"
+	ClusterAlertRuleSpecFieldPolicyFrom            = "policyFrom"
 	ClusterAlertRuleSpecFieldRepeatIntervalSeconds = "repeatIntervalSeconds"
 	ClusterAlertRuleSpecFieldRule                  = "rule"
 	ClusterAlertRuleSpecFieldScope                 = "scope"
@@ -37,6 +38,7 @@ type ClusterAlertRuleSpec struct {
 	Inherited             *bool              `json:"inherited,omitempty" yaml:"inherited,omitempty"`
 	MetricRule            *MetricRule        `json:"metricRule,omitempty" yaml:"metricRule,omitempty"`
 	NodeRule              *NodeRule          `json:"nodeRule,omitempty" yaml:"nodeRule,omitempty"`
+	PolicyFrom            string             `json:"policyFrom,omitempty" yaml:"policyFrom,omitempty"`
 	RepeatIntervalSeconds int64              `json:"repeatIntervalSeconds,omitempty" yaml:"repeatIntervalSeconds,omitempty"`
 	Rule                  *MetricRuleV2      `json:"rule,omitempty" yaml:"rule,omitempty"`
 	Scope                 string             `json:"scope,omitempty" yaml:"scope,omitempty"`

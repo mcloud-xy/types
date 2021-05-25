@@ -26,6 +26,7 @@ const (
 	ClusterAlertRuleFieldNamespaceId           = "namespaceId"
 	ClusterAlertRuleFieldNodeRule              = "nodeRule"
 	ClusterAlertRuleFieldOwnerReferences       = "ownerReferences"
+	ClusterAlertRuleFieldPolicyFrom            = "policyFrom"
 	ClusterAlertRuleFieldRemoved               = "removed"
 	ClusterAlertRuleFieldRepeatIntervalSeconds = "repeatIntervalSeconds"
 	ClusterAlertRuleFieldRule                  = "rule"
@@ -63,6 +64,7 @@ type ClusterAlertRule struct {
 	NamespaceId           string             `json:"namespaceId,omitempty" yaml:"namespaceId,omitempty"`
 	NodeRule              *NodeRule          `json:"nodeRule,omitempty" yaml:"nodeRule,omitempty"`
 	OwnerReferences       []OwnerReference   `json:"ownerReferences,omitempty" yaml:"ownerReferences,omitempty"`
+	PolicyFrom            string             `json:"policyFrom,omitempty" yaml:"policyFrom,omitempty"`
 	Removed               string             `json:"removed,omitempty" yaml:"removed,omitempty"`
 	RepeatIntervalSeconds int64              `json:"repeatIntervalSeconds,omitempty" yaml:"repeatIntervalSeconds,omitempty"`
 	Rule                  *MetricRuleV2      `json:"rule,omitempty" yaml:"rule,omitempty"`

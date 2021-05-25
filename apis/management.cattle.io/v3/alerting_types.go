@@ -214,7 +214,8 @@ type ClusterAlertRuleSpec struct {
 	TargetObject      map[string]string  `json:"targetObject"`
 	TargetObjects     map[string]string  `json:"targetObjects"`
 	Rule              *MetricRuleV2      `json:"rule,omitempty"`
-	Scope             string             `json:"scope"`
+	Scope             string             `json:"scope"`      // global
+	PolicyFrom        string             `json:"policyFrom"` //system
 	IDC               string             `json:"idc"`
 }
 
