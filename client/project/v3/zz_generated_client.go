@@ -32,6 +32,7 @@ type Client struct {
 	DaemonSet                     DaemonSetOperations
 	Job                           JobOperations
 	CronJob                       CronJobOperations
+	CloneSet                      CloneSetOperations
 	Workload                      WorkloadOperations
 	App                           AppOperations
 	AppRevision                   AppRevisionOperations
@@ -87,6 +88,7 @@ func NewClient(opts *clientbase.ClientOpts) (*Client, error) {
 	client.DaemonSet = newDaemonSetClient(client)
 	client.Job = newJobClient(client)
 	client.CronJob = newCronJobClient(client)
+	client.CloneSet = newCloneSetClient(client)
 	client.Workload = newWorkloadClient(client)
 	client.App = newAppClient(client)
 	client.AppRevision = newAppRevisionClient(client)

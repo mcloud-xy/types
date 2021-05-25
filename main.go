@@ -7,6 +7,7 @@ import (
 	monitoring "github.com/coreos/prometheus-operator/pkg/apis/monitoring"
 	monitoringv1 "github.com/coreos/prometheus-operator/pkg/apis/monitoring/v1"
 	istiov1alpha3 "github.com/knative/pkg/apis/istio/v1alpha3"
+	kruiseV1 "github.com/openkruise/kruise-api/apps/v1alpha1"
 	clusterSchema "github.com/rancher/types/apis/cluster.cattle.io/v3/schema"
 	managementSchema "github.com/rancher/types/apis/management.cattle.io/v3/schema"
 	publicSchema "github.com/rancher/types/apis/management.cattle.io/v3public/schema"
@@ -71,6 +72,7 @@ func main() {
 	generator.GenerateNativeTypes(knetworkingv1.SchemeGroupVersion, []interface{}{
 		knetworkingv1.NetworkPolicy{},
 	}, nil)
+
 	generator.GenerateNativeTypes(batchv1.SchemeGroupVersion, []interface{}{
 		batchv1.Job{},
 	}, nil)
@@ -124,4 +126,8 @@ func main() {
 			apiregistrationv1.APIService{},
 		},
 	)
+
+	generator.GenerateNativeTypes(kruiseV1.SchemeGroupVersion, []interface{}{
+		kruiseV1.CloneSet{},
+	}, nil)
 }
